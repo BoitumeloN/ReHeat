@@ -1,0 +1,37 @@
+
+.landing_main_header_left {
+    color: white;
+}
+
+
+.landing_main_header_right {
+    text-align: right;
+    width: 20%;
+}
+
+#header_spots a {
+    color:wheat;
+    text-align: right;
+    float: right;
+    text-decoration: none;
+}   
+
+.landing_main_header {
+    display: flex;
+    align-items: center; /* Aligns items vertically centered */
+    justify-content: space-between; /* Aligns h1 to the left and h4s to the right */
+    width: 100%;
+  }
+
+#header_spots {
+    display: flex;
+    gap: 20px; /* Adjust the gap between the h4 elements as needed */
+  }
+
+.spots a, .login a {
+    text-decoration: none; /* Remove the underline from the links */
+    color: inherit; /* Inherit the color from the parent element */
+  }
+    
+
+
