@@ -1,38 +1,61 @@
-.App {
+.body_text_center h3 {
+  /* padding: 10px 10px; */
+  font-size: 60px;
   text-align: center;
+  /* border: 3px solid blue; */
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: white;
+  opacity: 0.4;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.body_text_center p{
+  text-align: center;
+  /* padding-bottom:10px; */
+  font-size: 15px;
+  /* border: 3px solid blue; */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+  opacity: 0.4;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.about_for_foodies_center h6{
+  text-align: center;
+  font-size: 20px;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+
+/* Container for the header elements */
+.header-container {
+  display: flex;
+  justify-content: space-between; /* Space between header and links */
+  align-items: center; /* Center items vertically */
+  padding: 10px; /* Optional, for spacing around the container */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Styling for the main header */
+.landing_main_header {
+  flex: 1; /* Allows it to take up available space */
+}
+
+.landing_main_header h1 {
+  margin: 0; /* Remove default margin */
+  color: white;
+}
+
+/* Styling for the links section */
+.landing_main_header_left {
+  flex: 1; /* Allows it to take up available space */
+  text-align: right; /* Aligns links to the right */
+}
+
+.landing_main_header_left a {
+  margin-left: 15px; /* Space between links */
+  text-decoration: none; /* Remove underline from links */
+  color: white; /* Set link color */
+  font-weight:bold;
+}
+
+.landing_main_header_left a:hover {
+  text-decoration: none; /* Optional, underline on hover */
 }

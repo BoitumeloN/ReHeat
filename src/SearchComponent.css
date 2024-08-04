@@ -1,0 +1,24 @@
+.centernav {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    overflow: hidden;
+    background-color: black;
+    text-align: center;
+
+  }
+  
+.centernav input[type=text] {
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    font-size: 17px;
+    width: 80%;
+    border: 5px solid transparent;
+    border-image: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
+    border-image-slice: 1;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: gray;
+  }
