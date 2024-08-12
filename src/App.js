@@ -10,7 +10,7 @@ const App = () => {
     <div>
       <div class="header-container">
         <div className = "landing_main_header">
-        <h1 className='text-red'>ReHeats</h1>
+        <h1 className='text-blue'>ReHeats</h1>
       </div>
         <div className = "landing_main_header_left">
           <a href="#">My Spots</a>  

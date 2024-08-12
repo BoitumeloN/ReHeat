@@ -1155,11 +1155,11 @@ video {
   /* Allows it to take up available space */
 }
 
-.landing_main_header h1 {
-  margin: 0;
+/* .landing_main_header h1 { */
+  /* margin: 0; */
   /* Remove default margin */
-  color: white;
-}
+  /* color: white; */
+/* } */
 
 /* Styling for the links section */
 
