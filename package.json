@@ -48,5 +48,8 @@
   "bugs": {
     "url": "https://github.com/BoitumeloN/ReHeat/issues"
   },
-  "homepage": "."
+  "homepage": ".",
+  "devDependencies": {
+    "tailwindcss": "^3.4.9"
+  }
 }
