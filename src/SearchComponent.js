@@ -32,7 +32,7 @@ const SearchComponent = ({ onPlaceSelect }) => {
           onPlaceChanged={handlePlaceSelect}
         >
           <input
-            className='mb-4 text-center w-4/5 text-black rounded-3xl border-gray-500 border-2 bg-gray-500 text-lg'
+            className='mb-4 text-center w-4/5 text-black rounded-3xl border-gray-500 border-2 bg-gray-500 text-lg pt-2.5 pb-2.5'
             type="text"
             placeholder="Rediscover food..."
           />
