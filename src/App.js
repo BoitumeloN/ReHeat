@@ -24,14 +24,19 @@ const App = () => {
               </a>
           </div>
       </div>
-      <div className = "text-white text-center ">
-        <h3 className='font-black w-100 py-10 text-5xl'>APP</h3>
-        <div className = 'text-2xl'>
-          <p className='w-100'>Revisit your favorite flavors and discover new culinary gems with our food spots review app.</p>
-          <p className='w-100'> Whether you're craving a beloved dish from a familiar restaurant or eager to explore hidden gems around</p>
-        </div>
-        
-      </div>
+      <div className="text-white text-center p-4">
+            <h3 className='font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl py-6 md:py-10'>
+              APP
+            </h3>
+            <div className='text-lg sm:text-xl md:text-2xl mx-auto max-w-screen-md'>
+              <p className='mb-4'>
+                Revisit your favorite flavors and discover new culinary gems with our food spots review app.
+              </p>
+              <p>
+                Whether you're craving a beloved dish from a familiar restaurant or eager to explore hidden gems around.
+              </p>
+            </div>
+          </div>
       <SearchComponent onPlaceSelect={setLocation} />
       <div class = "about_for_foodies_center">
         <h6 className="text-white text-center p-4 py-10 font-sans ">built for foodies</h6>
