@@ -15,7 +15,7 @@ const App = () => {
             <div className = "">
               <h1 className='text-black px-8 font-black text-2xl'>Foodies</h1>
             </div>  
-            <div className = "text-black font-bold text-xl">
+            <div className = "text-black hover:text-blue font-bold text-xl">
                 <a className='px-5 text-right font-black'
                   href="#">Foodies
                 </a>  

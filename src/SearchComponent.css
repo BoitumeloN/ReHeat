@@ -15,8 +15,7 @@
     font-size: 17px;
     width: 80%;
     border: 2px solid gray;
-    border-radius: 0.25rem;
-    /* border-image: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%); */
+    border-radius: 1.35rem;
     border-image-slice: 1;
     background-size: cover;
     background-repeat: no-repeat;
