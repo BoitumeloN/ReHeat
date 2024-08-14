@@ -9,9 +9,9 @@ const App = () => {
   return (
     <div className='relative'>
       <div className="absolute inset-0 bg-cover bg-center bg-[url('/public/images/donuts.jpg')] z-[-1] blur-3xl"></div>
-        <div className='inset-0'>
+        <div className='flex flex-col min-h-screen'>
         <div className= 'relative z-10 p-8 text-white'>  
-        <div class="flex w-full">
+        <div class="flex w-full justify-between">
           <div className = "place-content-between">
           <h1 className='text-white px-8 font-black'>ReHeats</h1>
         </div>  
