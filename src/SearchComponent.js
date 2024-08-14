@@ -26,12 +26,13 @@ const SearchComponent = ({ onPlaceSelect }) => {
       googleMapsApiKey= "AIzaSyAcSXnXz8OvNcqt81FT4-WmnW6LMhycFZc"
       libraries = {libraries}
     >
-      <div className="centernav">
+      <div className="flex flex-col text-center overflow-hidden py-5">
         <Autocomplete
           onLoad={(autocompleteInstance) => setAutocomplete(autocompleteInstance)}
           onPlaceChanged={handlePlaceSelect}
         >
           <input
+            className='mb-4 text-center w-4/5 text-black rounded-3xl border-gray-500 border-2 bg-gray-500 text-lg'
             type="text"
             placeholder="Rediscover food..."
           />
