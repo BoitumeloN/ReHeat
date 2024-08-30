@@ -8,7 +8,7 @@ const App = () => {
 
   return (
     <div className='relative'>
-      <div className="absolute inset-0 bg-cover bg-center bg-[url('/public/images/newback.jpg')] z-[-1] blur-3xl"></div>
+      <div className="absolute inset-0 bg-cover bg-center bg-[url('/public/images/donuts.jpg')] z-[-1] blur-3xl"></div>
         <div className='flex flex-col min-h-screen'>
         <div className= 'relative z-10 p-8 text-white'>  
           <div class="flex w-full justify-between">
@@ -41,11 +41,11 @@ const App = () => {
       <div className="min-h-96 mx-auto max-w-screen-lg pt-8">
         <div className='flex gap-8 overflow-x-auto p-4'>
          <a className='aspect-[4/5] group relative shrink-0 overflow-hidden rounded-2xl shadow-sm w-56'>
-          <img loading= "eager" src = '/images/fireworks.png' className='size-full object-cover transition-transform
+          <img loading= "loading" src = '/images/fireworks.png' className='size-full object-cover transition-transform
            duration-300 ease-in-out group-hover:scale-110'></img>
           <div className='absolute inset-x-2 bottom-2 space-y-1.5 rounded-xl bg-white p-2 px-2.5 shadow-md'>
             <div className='rounded-2xl'>
-               <p className='text-black text-center font-black'>Food</p>
+               <p className='text-black text-center'>Food</p>
            </div>
           </div>
         </a> 
@@ -61,6 +61,6 @@ const App = () => {
     
   );
 };
+export default App; 
 
-export default App;
 
