@@ -23,7 +23,7 @@ const SearchComponent = ({ onPlaceSelect }) => {
 
   return (
     <LoadScript
-      googleMapsApiKey= "AIzaSyAcSXnXz8OvNcqt81FT4-WmnW6LMhycFZc"
+      googleMapsApiKey={process.env.REACT_APP_MAPS_API_KEY}
       libraries = {libraries}
     >
       <div className="flex flex-col text-center overflow-hidden py-5">
