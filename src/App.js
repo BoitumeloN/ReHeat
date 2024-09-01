@@ -8,7 +8,7 @@ const App = () => {
 
   return (
     <div className='relative'>
-      <div className="absolute inset-0 bg-cover bg-center bg-[url('/public/images/donuts.jpg')] z-[-1] blur-3xl"></div>
+      <div className="absolute inset-0 bg-cover bg-center bg-[url('/public/images/donuts.jpg')] z-[-1] blur-sm"></div>
         <div className='flex flex-col min-h-screen'>
         <div className= 'relative z-10 p-8 text-white'>  
           <div class="flex w-full justify-between">
