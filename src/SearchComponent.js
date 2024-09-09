@@ -9,26 +9,23 @@ const SearchComponent = ({ onPlaceSelect }) => {
   const inputRef = useRef(null);
 
   useEffect(() => {
+    const handlePlaceSelect = () => {
+      if (autocomplete) {
+       autocomplete.getPlace();
+        // Handle place selection logic here
+      }
+    };
+  
     if (window.google) {
-      // Initialize the autocomplete object
       const autocompleteObj = new window.google.maps.places.Autocomplete(inputRef.current);
       setAutocomplete(autocompleteObj);
-
-      // Add listener to capture place selection
       autocompleteObj.addListener('place_changed', handlePlaceSelect);
     }
-  }, []);
+  }, [autocomplete]);
 
   const handlePlaceSelect = () => {
     if (autocomplete) {
-      const place = autocomplete.getPlace();
-      // if (place.geometry) {
-      //   const location = {
-      //     name: place.name || "Location",
-      //     address: place.formatted_address || "No address available",
-      //   };
-      //   onPlaceSelect(location);
-      // }
+      autocomplete.getPlace();
     }
   };
 
