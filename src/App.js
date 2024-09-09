@@ -38,7 +38,7 @@ const App = () => {
             </div>
           </div>
       <SearchComponent onPlaceSelect={setLocation} />
-      <div className="min-h-96 mx-auto max-w-screen-lg pt-8">
+      {/* <div className="min-h-96 mx-auto max-w-screen-lg pt-8">
         <div className='flex gap-8 overflow-x-auto p-4'>
          <a className='aspect-[4/5] group relative shrink-0 overflow-hidden rounded-2xl shadow-sm w-56'>
           <img loading= "loading" src = '/images/fireworks.png' className='size-full object-cover transition-transform
@@ -50,7 +50,7 @@ const App = () => {
           </div>
         </a> 
         </div>
-      </div>
+      </div> */}
       <div class = "sm:text-xl md:text-2xl mx-auto max-w-screen-md">
         <h6 className="text-black text-center p-4 py-10 font-sans ">
           built for foodies</h6>
