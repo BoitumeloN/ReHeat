@@ -20,7 +20,7 @@ const App = () => {
                   href="/foodies">Foodies
                 </a>  
                 <a className='px-5 text-right font-black'
-                  href="#">Login
+                  href="/login">Login
                 </a>
             </div>
         </div>
@@ -38,6 +38,18 @@ const App = () => {
             </div>
           </div>
       <SearchComponent onPlaceSelect={setLocation} />
+      <div className='text-black text-center border-pink bg-blue pt-2.5 pb-2.5' >
+        <button onClick={() => console.log(location)}>Review Restaurant</button> 
+          {location ? (
+        <div>
+          <h2>Location Found:</h2>
+          <p>{location}</p>
+        </div>
+      ) : (
+        <p>No location selected yet.</p>
+      )}
+      </div>
+
       {/* <div className="min-h-96 mx-auto max-w-screen-lg pt-8">
         <div className='flex gap-8 overflow-x-auto p-4'>
          <a className='aspect-[4/5] group relative shrink-0 overflow-hidden rounded-2xl shadow-sm w-56'>
