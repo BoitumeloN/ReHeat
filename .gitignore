@@ -22,3 +22,26 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+
+# Virtual environment
+venv/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# SQLite database
+*.sqlite3
+*.db
+
+# Environment variables
+.env
+
+# Logs and temporary files
+*.log
+instance/
+*.bak
+*.swp
+*.tmp

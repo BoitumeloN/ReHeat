@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import httpClient from "./httpClient";
+import axios from 'axios';
 
-const Login = () => {
+const Register = () => {
   const [email, setEmail] = useState(""); 
   const [password, setPassword] = useState("");  
 
@@ -9,9 +9,9 @@ const Login = () => {
    
     console.log(email, password);
     try {
-      const response = await httpClient.post("//localhost:5000/register", {
-        email,
-        password,
+      const response = await axios.post("//localhost:5000/register", {
+        email: email,
+        password: password,
       }, {
         withCredentials: true, // Include credentials (e.g., cookies)
       });
@@ -62,4 +62,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

@@ -19,6 +19,7 @@ const Homepage = () => {
             <div className = "text-black hover:text-blue font-bold text-xl">
                 <Link className='px-5 text-right font-black' to="/foodies">Add Restaurant</Link>  
                 <Link className='px-5 text-right font-black' to="/login">Login</Link>
+                <Link className='px-5 text-right font-black' to="/register">Register</Link>
             </div>
         </div>
         <div className="text-black text-center p-4">
@@ -33,7 +34,7 @@ const Homepage = () => {
                 Whether you're craving a beloved dish from a familiar restaurant or eager to explore hidden gems around.
               </p>
             </div>
-          </div>
+      </div>
       <SearchComponent onPlaceSelect={setLocation} />
       <div className='text-black text-center border-pink bg-blue pt-2.5 pb-2.5' >
         <button onClick={() => console.log(location)}>Review Restaurant</button> 
