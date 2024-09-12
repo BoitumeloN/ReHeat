@@ -9,14 +9,14 @@ const Homepage = () => {
 
   return (
     <div className='relative'>
-      <div className="absolute inset-0 bg-cover bg-center bg-[url('/public/images/pizza2.jpg')] z-[-1] blur-sm"></div>
+      <div className="absolute inset-0 bg-cover bg-center bg-[url('/public/images/pizza2.jpg')] z-[-1] brightness-50"></div>
         <div className='flex flex-col min-h-screen'>
         <div className= 'relative z-10 p-8 text-white'>  
           <div class="flex w-full justify-between">
             <div className = "">
               <h1 className='text-white px-8 font-black text-2xl'>Heat</h1>
             </div>  
-            <div className = "text-white hover:text-blue font-bold text-xl">
+            <div className = "text-white hover:text-blue text-xl">
                 <Link className='px-5 text-right font-black' to="/foodies">Add Restaurant</Link>  
                 <Link className='px-5 text-right font-black' to="/login">Login</Link>
                 <Link className='px-5 text-right font-black' to="/register">Register</Link>
