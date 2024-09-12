@@ -35,6 +35,7 @@ def loader_user (user_id):
 @app.route('/register', methods=["GET", "POST"])
 def register():
     print("About to register")
+    list_tables()
     user = Users(email=request.form.get("email"),
                  password=request.form.get("password"))
     db.session.add(user)
@@ -47,15 +48,24 @@ def register():
 
 @app.route('/login',methods=["GET", "POST"] )
 def login():
-    if request.method == "POST":
         user = Users.query.filter_by(
-            username = request.form.get("username")).first()
+        email = request.form.get("email")).first()
         if user.password == request.form.get("password"):
             login_user(user)
-            return redirect(url_for("home"))
-        return render_template("login.html")
+            list_tables()
+        return jsonify({"status": "login successfull"})
 
+
+def list_tables():
+    # Reflect tables from the database
+    with app.app_context():
+        tables = db.metadata.tables
+        for table_name, table in tables.items():
+            print(f"Table: {table_name}")
+            for column in table.columns:
+                print(f"  Column: {column.name} Type: {column.type}")
 
 if __name__ == '__main__':
+    list_tables()
     app.run(debug=True)
   

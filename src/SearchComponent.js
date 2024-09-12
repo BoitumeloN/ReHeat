@@ -11,7 +11,7 @@ const SearchComponent = ({ onPlaceSelect }) => {
     if (window.google) {
       const autocompleteObj = new window.google.maps.places.Autocomplete(inputRef.current);
       setAutocomplete(autocompleteObj);
-      autocompleteObj.addListener('place_changed', handlePlaceSelect);
+      autocompleteObj.addListener('place_changed');
     }
   }, []); // Run only once
 

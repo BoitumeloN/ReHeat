@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import httpClient from "./httpClient";
+import axios from 'axios';
 
 const Login = () => {
   const [email, setEmail] = useState(""); 
@@ -9,17 +9,21 @@ const Login = () => {
    
     console.log(email, password);
     try {
-        await httpClient.post("//localhost:5000/register", {
-        email,
-        password,
-      }, {
-        withCredentials: true, // Include credentials (e.g., cookies)
-      });
+          await axios.post("http://localhost:5000/login", 
+          new URLSearchParams({
+              email: email,
+              password: password
+          }), 
+          {
+              headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+              withCredentials: true,
+          }
+      );
       window.location.href = "/";
-    } catch (error) {
+  }catch (error) {
       if (error.response?.status === 401) {
         alert("Invalid credentials");
-      } 
+      }
     } 
   };
 
@@ -34,7 +38,7 @@ const Login = () => {
           <div className='text-black flex flex-col space-y-6 items-center text-center'>
             <label className='text-center' htmlFor="email">Email</label>
             <input
-              className='w-2/3 py-2 rounded-xl bg-gray-200 pl-2' 
+              className='w-2/3 py-2 rounded-xl bg-gray-200 border-2  border-stone-800 pl-2' 
               type='email' 
               id='email' 
               value={email}  
@@ -42,7 +46,7 @@ const Login = () => {
             />
             <label htmlFor="password">Password</label>
             <input
-              className='w-2/3 py-2 rounded-xl bg-gray-200 pl-2' 
+              className='w-2/3 py-2 rounded-xl bg-gray-200 border-2  border-stone-800 pl-2' 
               type='password' 
               id='password' 
               value={password} 
@@ -51,7 +55,7 @@ const Login = () => {
             <input
               className='w-4/12 bg-transparent border-2 border-zinc-50 rounded-xl transition ease-in-out delay-150'
               type='submit'
-              value='Register' 
+              value='Login' 
               id='button' 
               onClick={(e) => logInUser(e)}
             />
