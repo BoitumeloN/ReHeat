@@ -38,7 +38,7 @@ const Register = () => {
           <div className='text-black flex flex-col space-y-6 items-center text-center'>
             <label className='text-center' htmlFor="email">Email</label>
             <input
-              className='w-2/3 py-2 rounded-xl bg-gray-200 pl-2' 
+              className='w-2/3 py-2 rounded-xl bg-gray-200 border-2 border-stone-800 pl-2' 
               type='email' 
               id='email' 
               value={email}  
@@ -46,14 +46,14 @@ const Register = () => {
             />
             <label htmlFor="password">Password</label>
             <input
-              className='w-2/3 py-2 rounded-xl bg-gray-200 pl-2' 
+              className='w-2/3 py-2 rounded-xl bg-gray-200 border-2 border-stone-800 pl-2' 
               type='password' 
               id='password' 
               value={password} 
               onChange={(e) => setPassword(e.target.value)}
             />
             <input
-              className='w-4/12 bg-transparent border-2 border-zinc-50 rounded-xl transition ease-in-out delay-150'
+              className='w-4/12 border-2 border-zinc-50 rounded-xl bg-indigo-300 hover:bg-indigo-200 py-2'
               type='submit'
               value='Register' 
               id='button' 

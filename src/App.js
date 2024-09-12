@@ -4,6 +4,7 @@ import Homepage from './Homepage';
 import Login from './Login';
 import Foodies from './Foodies';
 import Register from './Register';
+import AddRestaurant from './AddRestaurant';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path = "/register" element={<Register/>}/>
         <Route path= "/foodies" element={<Foodies />} />
+        <Route path= "/AddRestaurant" element={<AddRestaurant/>}/>
       </Routes>
     </Router>
   );

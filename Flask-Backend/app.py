@@ -18,7 +18,7 @@ login_manager.init_app(app)
 class Users(UserMixin, db.Model):
     id  = db.Column ( db.Integer, primary_key = True)
     email = db.Column (db.String(250), unique= True, nullable = False)
-    password = db.Column (db.String(250), unique= True, nullable = False)
+    password = db.Column (db.String(250), unique= True, nullable = False)    
 
 
 db.init_app(app)
@@ -31,11 +31,9 @@ def loader_user (user_id):
     return Users.query.get(user_id)
 
 
-
 @app.route('/register', methods=["GET", "POST"])
 def register():
     print("About to register")
-    list_tables()
     user = Users(email=request.form.get("email"),
                  password=request.form.get("password"))
     db.session.add(user)
@@ -46,26 +44,26 @@ def register():
                 "password": request.form.get("password") }), 201
 
 
+
 @app.route('/login',methods=["GET", "POST"] )
 def login():
         user = Users.query.filter_by(
         email = request.form.get("email")).first()
         if user.password == request.form.get("password"):
             login_user(user)
-            list_tables()
         return jsonify({"status": "login successfull"})
 
 
-def list_tables():
-    # Reflect tables from the database
-    with app.app_context():
-        tables = db.metadata.tables
-        for table_name, table in tables.items():
-            print(f"Table: {table_name}")
-            for column in table.columns:
-                print(f"  Column: {column.name} Type: {column.type}")
+
+@app.route('/logout')
+def logout():
+     login_user()
+     return jsonify({"message" : "User looged out successfully"})
+
+
+
+
 
 if __name__ == '__main__':
-    list_tables()
     app.run(debug=True)
   

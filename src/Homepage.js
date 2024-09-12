@@ -17,7 +17,7 @@ const Homepage = () => {
               <h1 className='text-white px-8 font-black text-2xl'>Heat</h1>
             </div>  
             <div className = "text-white hover:text-blue text-xl">
-                <Link className='px-5 text-right font-black' to="/foodies">Add Restaurant</Link>  
+                <Link className='px-5 text-right font-black' to="/AddRestaurant">Add Restaurant</Link>  
                 <Link className='px-5 text-right font-black' to="/login">Login</Link>
                 <Link className='px-5 text-right font-black' to="/register">Register</Link>
             </div>
