@@ -9,7 +9,7 @@ const Login = () => {
    
     console.log(email, password);
     try {
-      const response = await httpClient.post("//localhost:5000/register", {
+        await httpClient.post("//localhost:5000/register", {
         email,
         password,
       }, {
@@ -19,7 +19,7 @@ const Login = () => {
     } catch (error) {
       if (error.response?.status === 401) {
         alert("Invalid credentials");
-      }
+      } 
     } 
   };
 

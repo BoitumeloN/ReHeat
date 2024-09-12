@@ -9,11 +9,11 @@ const Register = () => {
    
     console.log(email, password);
     try {
-      const response = await axios.post("//localhost:5000/register", {
+        await axios.post("//localhost:5000/register", {
         email: email,
         password: password,
       }, {
-        withCredentials: true, // Include credentials (e.g., cookies)
+        withCredentials: true,
       });
       window.location.href = "/";
     } catch (error) {
@@ -34,7 +34,7 @@ const Register = () => {
           <div className='text-black flex flex-col space-y-6 items-center text-center'>
             <label className='text-center' htmlFor="email">Email</label>
             <input
-              className='w-2/3 py-2 rounded-xl bg-gray-200 pl-2' 
+              className='w-2/3 py-2 rounded-xl bg-gray-200 border-2  border-stone-800 pl-2' 
               type='email' 
               id='email' 
               value={email}  
@@ -42,7 +42,7 @@ const Register = () => {
             />
             <label htmlFor="password">Password</label>
             <input
-              className='w-2/3 py-2 rounded-xl bg-gray-200 pl-2' 
+              className='w-2/3 py-2 rounded-xl bg-gray-200 border-2  border-stone-800 pl-2' 
               type='password' 
               id='password' 
               value={password} 
