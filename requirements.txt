@@ -19,3 +19,4 @@ redis==5.0.8
 SQLAlchemy==2.0.34
 typing_extensions==4.12.2
 Werkzeug==3.0.4
+Flask_Migrate==4.0.7

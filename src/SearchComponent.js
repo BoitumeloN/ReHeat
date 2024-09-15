@@ -36,7 +36,7 @@ const SearchComponent = ({ onPlaceSelect }) => {
         >
           <input
             ref={inputRef} // Make sure to use the ref
-            className='mb-4 text-center w-4/5 text-black rounded-3xl border-gray-500 border-2 bg-transparent text-lg pt-2.5 pb-2.5'
+            className='mb-4 text-center w-4/5 text-white rounded-3xl border-gray-500 border-2 bg-transparent text-lg pt-2.5 pb-2.5'
             type="text"
             placeholder="Rediscover food..."
           />

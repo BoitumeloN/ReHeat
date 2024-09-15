@@ -11,7 +11,7 @@ const Register = () => {
     try {
           await axios.post("http://localhost:5000/register", 
           new URLSearchParams({
-              email: email,
+              email : email,
               password: password
           }), 
           {
@@ -19,7 +19,7 @@ const Register = () => {
               withCredentials: true,
           }
       );
-      window.location.href = "/";
+      window.location.href = "/login";
   } catch (error) {
       if (error.response?.status === 401) {
         alert("Invalid credentials");

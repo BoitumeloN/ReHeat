@@ -6,7 +6,6 @@ const Login = () => {
   const [password, setPassword] = useState("");  
 
   const logInUser = async () => { 
-   
     console.log(email, password);
     try {
           await axios.post("http://localhost:5000/login", 
@@ -25,6 +24,10 @@ const Login = () => {
         alert("Invalid credentials");
       }
     } 
+  };
+
+  const loggedIn = () =>{
+
   };
 
   return (
