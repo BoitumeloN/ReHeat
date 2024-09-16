@@ -3,11 +3,12 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user
 from flask_cors import CORS
 from flask_migrate import Migrate
+from flask_bcrypt import Bcrypt
 
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
-
+bcrypt = Bcrypt(app)
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite"
 app.config["SECRET_KEY"] = "axaxaxaxaxa8"   
@@ -22,13 +23,16 @@ class Users(UserMixin, db.Model):
     id  = db.Column ( db.Integer, primary_key = True)
     username = db.Column (db.String(250), unique= False, nullable = False)
     password = db.Column (db.String(250), unique= False, nullable = False)
+    # reviews = db.relationship('Reviews', backref = 'user', lazy = True)
 
 
-# class Reviews(db.Model):
-#     food_place = db.Column (db.Column(db.String(250), unique= True, nullable = False))
-#     rating_stars = db.Column(db.String(250), unique= True, nullable = False)     
-#     review  =  db.Column(db.String(250), unique= True, nullable = False)   
-#     user_id = db.Column (db.Integer, foreign_key = True)
+class Reviews(db.Model):
+    id = db.Column(db.Integer, primary_key=True) 
+    place = db.Column (db.String(250), unique= False, nullable = False)
+    rating = db.Column(db.String(250), unique= False, nullable = False)     
+    review  =  db.Column(db.String(250), unique= False, nullable = False)   
+    favourite =  db.Column(db.String(250), unique= False, nullable = False) 
+    # user_id = db.Column (db.Integer, db.ForeignKey('users.id'), nullable = False)
 
 
 db.init_app(app)
@@ -44,8 +48,8 @@ def loader_user (user_id):
 @app.route('/register', methods=["GET", "POST"])
 def register():
     print("About to register")
-    user = Users(username=request.form.get("email"),
-                 password=request.form.get("password"))
+    user = Users(username = request.form.get("email"),
+                 password =  request.form.get("password"))
     db.session.add(user)
     db.session.commit()
     print(request.form.get("email")+ " " + request.form.get("password"))
@@ -69,12 +73,40 @@ def login():
         return jsonify({"status": "login successfull"})
 
 
-# @app.route('/logout')
-# def logout():
-#      login_user()
-#      return jsonify({"message" : "User logged out successfully"})
+
+@app.route('/review', methods=["GET", "POST"]  )
+def review():
+    
+    reviewtable = Reviews(review = request.form.get("review"),
+    rating = request.form.get("rating") ,
+    favourite = request.form.get("favourite"),
+     place = request.form.get("place"))
+   
+    db.session.add(reviewtable)
+    db.session.commit()
+    return jsonify({
+        "review" : request.form.get("review"),
+        "rating" : request.form.get("rating"),
+        "favourite" :  request.form.get("favourite"),
+        "place" :  request.form.get("place")
+    })
 
 
+@app.route('/getreview',  methods=["GET", "POST"])
+def getreview():
+    userreview = Reviews.query.filter_by(rating = 5).first()
+    if review is None:
+        return jsonify({"message": "Review Not Found"})
+    else:
+        return jsonify({
+            "rating": userreview.rating,
+            "review": userreview.review,
+            "favourite" : userreview.favourite,
+            "place": userreview.place
+        }  
+        )
+
+   
 @app.route('/logout', methods=['POST'])
 def logout():
     session.pop('username', None)

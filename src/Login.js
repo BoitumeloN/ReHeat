@@ -6,7 +6,7 @@ const Login = () => {
   const [password, setPassword] = useState("");  
 
   const logInUser = async () => { 
-    console.log(email, password);
+    
     try {
           await axios.post("http://localhost:5000/login", 
           new URLSearchParams({
@@ -26,9 +26,6 @@ const Login = () => {
     } 
   };
 
-  const loggedIn = () =>{
-
-  };
 
   return (
     <div className='w-full h-screen flex bg-neutral-600 justify-center items-center'>

@@ -4,37 +4,45 @@ import { Link } from "react-router-dom";
 import SearchComponent from './SearchComponent';
 import "./Homepage.css"
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Homepage = () => {
   const [location, setLocation] = useState(null);
-
-
   const [user, setUser] = useState(null);
 
+  const navigate = useNavigate();
+
+  const handlePlaceSelect = (place) => {
+    console.log(location)
+    setLocation(place.name);
+    navigate('/AddRestaurant', { state: { location: place.name } });
+  };
+
   useEffect(() => {
-    // Fetch user login status from the backend
+
     const checkLoginStatus = async () => {
       const response = await fetch('http://localhost:5000/check_login', {
         method: 'GET',
-        credentials: 'include' // Include cookies with the request
-      });
-      const data = await response.json();
+        credentials: 'include'
+      }); 
+      
+      const data = await response.json(); 
       console.log(data)
-      if (data.loggedIn) {
-        setUser(data.username);  // Update state with logged-in user's name
+      if (data.loggedIn) { 
+        setUser(data.username); 
       }
     };
 
     checkLoginStatus();
-  }, []);
+  }, []); // [] no clean up code
 
   const handleLogout = async () => {
-    // Send logout request to Flask backend
+    
     await fetch('/logout', {
       method: 'POST',
       credentials: 'include'
     });
-    setUser(null);  // Clear user state after logging out
+    setUser(null); 
   };
 
   return (
@@ -74,7 +82,7 @@ const Homepage = () => {
               </p>
             </div>
       </div>
-      <SearchComponent onPlaceSelect={setLocation} />
+      <SearchComponent onPlaceSelect={handlePlaceSelect} />
       <div class = "sm:text-xl md:text-2xl mx-auto max-w-screen-md">
         <h6 className="text-white text-center p-4 py-10 font-sans ">
           built for foodies</h6>
