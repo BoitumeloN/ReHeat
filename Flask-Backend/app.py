@@ -95,7 +95,7 @@ def review():
 @app.route('/getreview',  methods=["GET", "POST"])
 def getreview():
     userreview = Reviews.query.filter_by(rating = 1).first()
-    if review is None:
+    if userreview is None:
         return jsonify({"message": "Review Not Found"})
     else:
         return jsonify({
