@@ -21,20 +21,26 @@ const Homepage = () => {
   useEffect(() => {
 
     const checkLoginStatus = async () => {
-      const response = await fetch('http://localhost:5000/check_login', {
-        method: 'GET',
-        credentials: 'include'
-      }); 
-      
-      const data = await response.json(); 
-      console.log(data)
-      if (data.loggedIn) { 
-        setUser(data.username); 
+
+      try{
+        const response = await fetch('http://localhost:5000/check_login', {
+          method: 'GET',
+          credentials: 'include'
+        }); 
+     
+        const data = await response.json(); 
+        console.log(data)
+        if (data.loggedIn) { 
+          setUser(data.username); 
+        }
+      }catch(error){
+        console.log(error)
       }
+      
     };
 
     checkLoginStatus();
-  }, []); // [] no clean up code
+  }, []); 
 
   const handleLogout = async () => {
     

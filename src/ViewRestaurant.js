@@ -2,12 +2,13 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 
-const ViewRestaurant = ({location}) => {
+const ViewRestaurant = () => {
 
   const [favourite, setFavourite] = useState(null)  
   const [review, setReview] = useState(null)
   const [rating, setRating] = useState(null)
   const [place, setPlace] = useState(null)
+  const [reviewdate, setReviewDate] =useState(null)
 
   useEffect(()=>{
 
@@ -23,6 +24,7 @@ const ViewRestaurant = ({location}) => {
         setReview(data.review)
         setRating(data.rating)
         setPlace(data.place)
+        setReviewDate(data.reviewdate)
      };
      getreviews();
   },[])
@@ -33,7 +35,7 @@ const ViewRestaurant = ({location}) => {
       <div className='flex flex-col bg-slate-50 w-4/6 rounded-2xl space-y-6 shadow=2xl'>
         <div className='flex justify-between w-full mt-2 font-black'>
             <h1 className='w-1/4 pl-6'>{place}</h1>
-            <h1 className='w-1/4'>09 July 2024</h1>
+            <h1 className='w-1/4'>{reviewdate}</h1>
         </div>
         <div className='flex w-4/6 overflow-hidden'>
             <img className= "h-48 w-40 object-left ml-5 mb-5 rounded-xl transition duration-300 ease-in-out hover:scale-110" src='./images/fireworks.png' alt=""/>

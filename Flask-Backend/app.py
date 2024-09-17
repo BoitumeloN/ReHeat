@@ -23,7 +23,6 @@ class Users(UserMixin, db.Model):
     id  = db.Column ( db.Integer, primary_key = True)
     username = db.Column (db.String(250), unique= False, nullable = False)
     password = db.Column (db.String(250), unique= False, nullable = False)
-    # reviews = db.relationship('Reviews', backref = 'user', lazy = True)
 
 
 class Reviews(db.Model):
@@ -32,7 +31,7 @@ class Reviews(db.Model):
     rating = db.Column(db.String(250), unique= False, nullable = False)     
     review  =  db.Column(db.String(250), unique= False, nullable = False)   
     favourite =  db.Column(db.String(250), unique= False, nullable = False) 
-    # user_id = db.Column (db.Integer, db.ForeignKey('users.id'), nullable = False)
+    reviewdate = db.Column(db.String(250),unique= False, nullable = False )
 
 
 db.init_app(app)
@@ -62,8 +61,7 @@ def register():
 
 @app.route('/login',methods=["GET", "POST"] )
 def login():
-        #Password from /login term,inal
-        #User from db
+        
         user = Users.query.filter_by(username = request.form.get("email"), password = request.form.get("password")).first()
         if user is None:
             return jsonify({"status": "User not found"}), 404
@@ -80,7 +78,8 @@ def review():
     reviewtable = Reviews(review = request.form.get("review"),
     rating = request.form.get("rating") ,
     favourite = request.form.get("favourite"),
-     place = request.form.get("place"))
+    place = request.form.get("place"),
+    reviewdate = request.form.get("reviewdate"))
    
     db.session.add(reviewtable)
     db.session.commit()
@@ -88,13 +87,14 @@ def review():
         "review" : request.form.get("review"),
         "rating" : request.form.get("rating"),
         "favourite" :  request.form.get("favourite"),
-        "place" :  request.form.get("place")
+        "place" :  request.form.get("place"),
+        "reviewdate" :  request.form.get("reviewdate")
     })
 
 
 @app.route('/getreview',  methods=["GET", "POST"])
 def getreview():
-    userreview = Reviews.query.filter_by(rating = 5).first()
+    userreview = Reviews.query.filter_by(rating = 1).first()
     if review is None:
         return jsonify({"message": "Review Not Found"})
     else:
@@ -102,7 +102,8 @@ def getreview():
             "rating": userreview.rating,
             "review": userreview.review,
             "favourite" : userreview.favourite,
-            "place": userreview.place
+            "place": userreview.place,
+            "reviewdate" :userreview.reviewdate
         }  
         )
 

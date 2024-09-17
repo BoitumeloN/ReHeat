@@ -4,29 +4,37 @@ import axios from 'axios'
 import { useLocation } from 'react-router-dom';
 
 
+
 const AddRestaurant = () => {
   const [favourite, setFavourite] = useState('')
   const [review, setReview] = useState('')
   const [rating, setRating] = useState('')
   const { state } = useLocation(); // Access location passed as state
   const location = state?.location; 
+  const reviewdate = new Date()
+  
 
   const manageReview = async () => {
-    console.log(favourite, review, rating)
-    
-    await axios.post("http://localhost:5000/review", new URLSearchParams({
+   
+    try{
+      const request = await axios.post("http://localhost:5000/review", new URLSearchParams({
         favourite : favourite,
         rating : rating,
         review : review,
-        place : location
-    }), {
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    withCredentials: true,
-    })
+        place : location,
+        reviewdate : reviewdate.getFullYear() +'-'+reviewdate.getMonth()+'-' + reviewdate.getDate()
+       }), {
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          withCredentials: true,
+      })
+      console.log(request)
+      window.location.href  = '/ViewRestaurant'
 
-    window.location.href  = '/ViewRestaurant'
-
-  };
+    }catch(error){
+      console.log(error)
+    };}
+    
+    
 
   return (
     <div className='w-full h-screen flex bg-neutral-600 justify-center items-center'>
