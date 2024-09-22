@@ -4,7 +4,7 @@ from flask_login import LoginManager, UserMixin, login_user
 from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_bcrypt import Bcrypt
-
+from uuid import uuid4
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
@@ -39,6 +39,7 @@ with app.app_context():
     db.create_all()
 
 
+
 @login_manager.user_loader
 def loader_user (user_id):
     return Users.query.get(user_id)
@@ -46,9 +47,13 @@ def loader_user (user_id):
 
 @app.route('/register', methods=["GET", "POST"])
 def register():
-    print("About to register")
-    user = Users(username = request.form.get("email"),
-                 password =  request.form.get("password"))
+    email = request.form.get("email")
+    password = request.form.get("password")
+    user_exists =  Users.query.filter_by(username = email).first() is not None
+    if  user_exists:
+        return jsonify({"message": "user already exists"}), 409
+
+    user = Users(username = email, password =  password)
     db.session.add(user)
     db.session.commit()
     print(request.form.get("email")+ " " + request.form.get("password"))
@@ -94,7 +99,7 @@ def review():
 
 @app.route('/getreview',  methods=["GET", "POST"])
 def getreview():
-    userreview = Reviews.query.filter_by(rating = 1).first()
+    userreview = Reviews.query.filter_by(rating = 5).first()
     if userreview is None:
         return jsonify({"message": "Review Not Found"})
     else:
