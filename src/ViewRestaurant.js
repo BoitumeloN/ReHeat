@@ -11,21 +11,26 @@ const ViewRestaurant = () => {
   const [reviewdate, setReviewDate] =useState(null)
 
   useEffect(()=>{
-
+     
      const getreviews = async () => {
-        const response = await fetch('http://localhost:5000/getreview', {
+      try{
+          const response = await fetch('http://localhost:5000/getreview', {
           method: 'GET',
           credentials: 'include' // Include cookies with the request
-        });
+          });
 
-        const data = await response.json(); // data to store response from server
-        console.log(data)
-        setFavourite(data.favourite)
-        setReview(data.review)
-        setRating(data.rating)
-        setPlace(data.place)
-        setReviewDate(data.reviewdate)
+          const data = await response.json(); // data to store response from server
+          console.log(data)
+          setFavourite(data.favourite)
+          setReview(data.review)
+          setRating(data.rating)
+          setPlace(data.place)
+          setReviewDate(data.reviewdate)
+      }
+      catch(error)
+          {console.log(error)}
      };
+     
      getreviews();
   },[])
 
