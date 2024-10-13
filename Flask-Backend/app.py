@@ -105,16 +105,17 @@ def getreview():
     if userReview is None:
         return jsonify({"message": "Review Not Found"})
     else:
-        for review in userReview:
-            return jsonify({
-                "rating": review.rating,
-                "review": review.review,
-                "favourite" : review.favourite,
-                "place": review.place,
-                "reviewdate" :review.reviewdate,
-                "username" : review.username
-            }  
-        )
+        reviews = []
+    for review in userReview:
+        reviews.append({
+            "rating": review.rating,
+            "review": review.review,
+            "favourite": review.favourite,
+            "place": review.place,
+            "reviewdate": review.reviewdate,
+            "username": review.username
+        })
+    return jsonify(reviews) 
 
    
 @app.route('/logout', methods=['POST'])

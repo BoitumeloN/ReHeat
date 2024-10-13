@@ -23,7 +23,7 @@ const AddRestaurant = () => {
         rating : rating,
         review : review,
         place : location,
-        reviewdate : reviewdate.getFullYear() +'-'+reviewdate.getMonth()+1+'-' + reviewdate.getDate(),
+        reviewdate : reviewdate.toLocaleString('default', { month: 'long' })+" "+ reviewdate.getDate()+", "+reviewdate.getFullYear(),
         username : username
        }), {
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
