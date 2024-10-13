@@ -6,6 +6,7 @@ import "./Homepage.css"
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+
 const Homepage = () => {
   const [location, setLocation] = useState(null);
   const [user, setUser] = useState(null);
@@ -15,11 +16,12 @@ const Homepage = () => {
   const handlePlaceSelect = (place) => {
     console.log(location)
     setLocation(place.name);
-    navigate('/AddRestaurant', { state: { location: place.name } });
+    console.log(user)
+    navigate('/AddRestaurant', { state: { location: place.name, username : user } }); 
   };
 
   useEffect(() => {
-
+    
     const checkLoginStatus = async () => {
 
       try{

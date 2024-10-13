@@ -10,6 +10,7 @@ const AddRestaurant = () => {
   const [review, setReview] = useState('')
   const [rating, setRating] = useState('')
   const { state } = useLocation(); // Access location passed as state
+  const username = state?.username;
   const location = state?.location; 
   const reviewdate = new Date()
   
@@ -22,7 +23,8 @@ const AddRestaurant = () => {
         rating : rating,
         review : review,
         place : location,
-        reviewdate : reviewdate.getFullYear() +'-'+reviewdate.getMonth()+'-' + reviewdate.getDate()
+        reviewdate : reviewdate.getFullYear() +'-'+reviewdate.getMonth()+1+'-' + reviewdate.getDate(),
+        username : username
        }), {
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           withCredentials: true,

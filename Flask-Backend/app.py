@@ -32,12 +32,12 @@ class Reviews(db.Model):
     review  =  db.Column(db.String(250), unique= False, nullable = False)   
     favourite =  db.Column(db.String(250), unique= False, nullable = False) 
     reviewdate = db.Column(db.String(250),unique= False, nullable = False )
+    username = db.Column(db.String(250), unique = False, nullable = False)
 
 
 db.init_app(app)
 with app.app_context():
     db.create_all()
-
 
 
 @login_manager.user_loader
@@ -80,36 +80,40 @@ def login():
 @app.route('/review', methods=["GET", "POST"]  )
 def review():
     
-    reviewtable = Reviews(review = request.form.get("review"),
+    reviewEntry = Reviews(review = request.form.get("review"),
     rating = request.form.get("rating") ,
     favourite = request.form.get("favourite"),
     place = request.form.get("place"),
-    reviewdate = request.form.get("reviewdate"))
-   
-    db.session.add(reviewtable)
+    reviewdate = request.form.get("reviewdate"),username = request.form.get("username"))
+
+    db.session.add(reviewEntry)
     db.session.commit()
     return jsonify({
         "review" : request.form.get("review"),
         "rating" : request.form.get("rating"),
         "favourite" :  request.form.get("favourite"),
         "place" :  request.form.get("place"),
-        "reviewdate" :  request.form.get("reviewdate")
+        "reviewdate" :  request.form.get("reviewdate"),
+         "username" :  request.form.get("username")
     })
 
 
 @app.route('/getreview',  methods=["GET", "POST"])
 def getreview():
-    userreview = Reviews.query.filter_by(rating = 5).first()
-    if userreview is None:
+    userReview = Reviews.query.filter_by(username =  "boitumelok.ngwenya" ).all()
+    print(userReview)
+    if userReview is None:
         return jsonify({"message": "Review Not Found"})
     else:
-        return jsonify({
-            "rating": userreview.rating,
-            "review": userreview.review,
-            "favourite" : userreview.favourite,
-            "place": userreview.place,
-            "reviewdate" :userreview.reviewdate
-        }  
+        for review in userReview:
+            return jsonify({
+                "rating": review.rating,
+                "review": review.review,
+                "favourite" : review.favourite,
+                "place": review.place,
+                "reviewdate" :review.reviewdate,
+                "username" : review.username
+            }  
         )
 
    
