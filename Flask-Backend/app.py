@@ -22,6 +22,7 @@ login_manager.init_app(app)
 class Users(UserMixin, db.Model):
     id  = db.Column ( db.Integer, primary_key = True)
     username = db.Column (db.String(250), unique= False, nullable = False)
+    email = db.Column (db.String(250), unique= False, nullable = False)
     password = db.Column (db.String(250), unique= False, nullable = False)
 
 
@@ -49,11 +50,12 @@ def loader_user (user_id):
 def register():
     email = request.form.get("email")
     password = request.form.get("password")
-    user_exists =  Users.query.filter_by(username = email).first() is not None
+    username = request.form.get("username")
+    user_exists =  Users.query.filter_by(email = email).first() is not None
     if  user_exists:
         return jsonify({"message": "user already exists"}), 409
 
-    user = Users(username = email, password =  password)
+    user = Users(email = email, password =  password,username = username)
     db.session.add(user)
     db.session.commit()
     print(request.form.get("email")+ " " + request.form.get("password"))
@@ -67,11 +69,11 @@ def register():
 @app.route('/login',methods=["GET", "POST"] )
 def login():
         
-        user = Users.query.filter_by(username = request.form.get("email"), password = request.form.get("password")).first()
+        user = Users.query.filter_by(email = request.form.get("email"), password = request.form.get("password")).first()
         if user is None:
             return jsonify({"status": "User not found"}), 404
         if user.password == request.form.get("password"):
-            session['username'] = request.form.get("email").split('@')[0]
+            session['username'] = user.username
             login_user(user)
         return jsonify({"status": "login successfull"})
 
@@ -100,7 +102,7 @@ def review():
 
 @app.route('/getreview',  methods=["GET", "POST"])
 def getreview():
-    userReview = Reviews.query.filter_by(username =  "boitumelok.ngwenya" ).all()
+    userReview = Reviews.query.filter_by(username =  "Boitumelo" ).all()
     print(userReview)
     if userReview is None:
         return jsonify({"message": "Review Not Found"})

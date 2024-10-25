@@ -28,7 +28,7 @@ const Login = () => {
 
 
   return (
-    <div className='w-full h-screen flex bg-neutral-600 justify-center items-center'>
+    <div className='w-full h-screen flex bg-zinc-200 justify-center items-center'>
       <div className='bg-zinc-200 w-6/12 rounded-2xl py-10 drop-shadow-2xl'>
         <div className='flex'>
           <h1 className='text-black px-8 font-black text-3xl'>Heat</h1>
