@@ -18,7 +18,7 @@ const AddRestaurant = () => {
   const manageReview = async () => {
    
     try{
-      const request = await axios.post("http://localhost:5000/review", new URLSearchParams({
+      const request = await axios.post("/review", new URLSearchParams({
         favourite : favourite,
         rating : rating,
         review : review,

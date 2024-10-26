@@ -2,6 +2,7 @@
   "name": "reheat",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://boitumelo.pythonanywhere.com",
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.16.8",
     "@react-google-maps/api": "^2.19.3",

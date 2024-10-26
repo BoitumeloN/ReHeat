@@ -10,7 +10,7 @@ const Register = () => {
    
     console.log(email, password);
     try {
-          await axios.post("http://localhost:5000/register", 
+          await axios.post("/register", 
           new URLSearchParams({
               username : username,
               email : email,

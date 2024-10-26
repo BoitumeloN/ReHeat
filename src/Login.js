@@ -8,7 +8,7 @@ const Login = () => {
   const logInUser = async () => { 
     
     try {
-          await axios.post("http://localhost:5000/login", 
+          await axios.post("/login", 
           new URLSearchParams({
               email: email,
               password: password

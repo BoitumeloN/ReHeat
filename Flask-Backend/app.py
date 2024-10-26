@@ -10,9 +10,16 @@ app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
 bcrypt = Bcrypt(app)
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite"
-app.config["SECRET_KEY"] = "axaxaxaxaxa8"   
-db = SQLAlchemy()
+# Replace with your actual credentials
+username = 'Boitumelo'  # Your PythonAnywhere username
+password = 'Phumzile1@'  # Your MySQL password
+database_name = 'Boitumelo$default'  # Your database name
+
+# Database configuration
+app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{username}:{password}@{username}.mysql.pythonanywhere-services.com/{database_name}'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+ 
+db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
 login_manager = LoginManager()
@@ -36,10 +43,14 @@ class Reviews(db.Model):
     username = db.Column(db.String(250), unique = False, nullable = False)
 
 
-db.init_app(app)
-with app.app_context():
-    db.create_all()
+# db.init_app(app)
+# with app.app_context():
+#     db.create_all()
 
+
+def create_tables():
+    db.create_all()    
+ 
 
 @login_manager.user_loader
 def loader_user (user_id):
@@ -64,7 +75,20 @@ def register():
                 "password": request.form.get("password") }), 201
 
 
-
+@app.route('/users', methods=['GET'])
+def get_users():
+    try:
+        users = Users.query.all()  # Retrieve all users from the database
+        user_list = []
+        for user in users:
+            user_list.append({
+                'id': user.id,
+                'username': user.username,
+                'email': user.email
+            })
+        return {"users": user_list}, 200
+    except Exception as e:
+        return {"error": str(e)}, 500  # Return error message if something goes wrong
 
 @app.route('/login',methods=["GET", "POST"] )
 def login():

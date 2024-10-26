@@ -6,7 +6,7 @@ const ViewRestaurant = () => {
   useEffect(() => {
     const getReviews = async () => {
       try {
-        const response = await fetch('http://localhost:5000/getreview', {
+        const response = await fetch('/getreview', {
           method: 'GET',
           credentials: 'include'
         });
